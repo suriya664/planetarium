@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - Cosmic Planetarium</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0C4A6E',
+                        secondary: '#7C3AED',
+                        accent: '#14B8A6',
+                        dark: '#0A1929',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-dark text-white min-h-screen flex items-center justify-center overflow-hidden relative">
+
+    <!-- Background Animation -->
+    <div class="absolute inset-0 z-0">
+        <div
+            class="absolute top-0 left-0 w-full h-full bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2034&auto=format&fit=crop')] bg-cover bg-center opacity-40">
+        </div>
+        <div class="absolute top-0 left-0 w-full h-full bg-gradient-to-t from-dark/90 to-dark/40"></div>
+    </div>
+
+    <!-- Login Card -->
+    <div class="relative z-10 w-full max-w-lg px-6 py-12">
+        <div
+            class="glass p-8 md:p-10 rounded-3xl shadow-2xl border border-white/10 backdrop-blur-xl animate-fade-in-up">
+
+            <div class="text-center mb-8">
+                <h1 class="text-3xl font-heading font-bold mb-2">Join the Cosmos</h1>
+                <p class="text-slate-300 text-sm">Create an account to start your journey.</p>
+            </div>
+
+            <form action="dashboard-visitor.html" class="space-y-5">
+                <div class="grid grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-slate-300">First Name</label>
+                        <input type="text" placeholder="John"
+                            class="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium mb-2 text-slate-300">Last Name</label>
+                        <input type="text" placeholder="Doe"
+                            class="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 px-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-300">Email Address</label>
+                    <div class="relative">
+                        <i data-lucide="mail" class="absolute left-3 top-3 w-5 h-5 text-slate-500"></i>
+                        <input type="email" placeholder="you@example.com"
+                            class="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 pl-10 pr-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-medium mb-2 text-slate-300">Password</label>
+                    <div class="relative">
+                        <i data-lucide="lock" class="absolute left-3 top-3 w-5 h-5 text-slate-500"></i>
+                        <input type="password" placeholder="Create a password"
+                            class="w-full bg-slate-900/50 border border-slate-700 rounded-xl py-3 pl-10 pr-4 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-accent focus:border-transparent transition-all">
+                    </div>
+                </div>
+
+                <button type="submit"
+                    class="w-full py-3 rounded-xl bg-gradient-to-r from-secondary to-accent text-white font-bold shadow-lg shadow-secondary/30 hover:shadow-secondary/50 transform hover:-translate-y-1 transition-all mt-4">
+                    Create Account
+                </button>
+            </form>
+
+            <div class="mt-8 text-center text-sm text-slate-400">
+                Already have an account? <a href="login.html" class="text-white font-bold hover:underline">Log in</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

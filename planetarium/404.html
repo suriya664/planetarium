@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Lost in Space</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0C4A6E',
+                        secondary: '#7C3AED',
+                        accent: '#14B8A6',
+                        dark: '#0A1929',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                    },
+                    animation: {
+                        'float': 'float 6s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+
+<body class="bg-dark text-white min-h-screen flex items-center justify-center overflow-hidden relative">
+
+    <!-- Background Stars -->
+    <div class="absolute inset-0 z-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-30">
+    </div>
+    <div class="absolute w-96 h-96 bg-secondary/20 rounded-full blur-3xl -top-20 -right-20"></div>
+    <div class="absolute w-96 h-96 bg-accent/20 rounded-full blur-3xl -bottom-20 -left-20"></div>
+
+    <div class="text-center relative z-10 px-4">
+        <div class="relative inline-block mb-8">
+            <span
+                class="text-9xl font-bold font-heading text-transparent bg-clip-text bg-gradient-to-r from-secondary to-accent opacity-50 select-none">404</span>
+            <div class="absolute inset-0 flex items-center justify-center animate-float">
+                <img src="https://cdn-icons-png.flaticon.com/512/1545/1545837.png"
+                    class="w-40 drop-shadow-[0_10px_20px_rgba(0,0,0,0.5)] transform -rotate-12" alt="Astronaut">
+            </div>
+        </div>
+
+        <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">Houston, We Have a Problem</h1>
+        <p class="text-lg text-slate-300 max-w-lg mx-auto mb-8">
+            The page you are looking for has drifted into a black hole or never existed in this solar system.
+        </p>
+
+        <a href="index.html"
+            class="inline-flex items-center justify-center px-8 py-3 rounded-full bg-white text-dark font-bold hover:bg-accent hover:text-white transition-all shadow-lg shadow-white/10">
+            <i data-lucide="arrow-left" class="w-5 h-5 mr-2"></i> Return to Earth
+        </a>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

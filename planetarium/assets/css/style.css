@@ -1,0 +1,216 @@
+/* 
+====================================================================
+   PLANETARIUM WEBSITE - CORE STYLES
+   Theme: Cosmic Wonder (Deep Space Blue, Nebula Purple, Teal, Orange)
+====================================================================
+*/
+
+/* --- Imports --- */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* --- CSS Variables --- */
+:root {
+    /* Colors */
+    --color-primary: #0C4A6E;
+    /* Deep Space Blue */
+    --color-secondary: #7C3AED;
+    /* Nebula Purple */
+    --color-accent: #14B8A6;
+    /* Cosmic Teal */
+    --color-accent-2: #F97316;
+    /* Stellar Orange */
+    --color-bg-dark: #0A1929;
+    /* Dark Navy */
+    --color-bg-light: #FFFFFF;
+    /* White */
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, #0C4A6E 0%, #7C3AED 50%, #14B8A6 100%);
+    --gradient-btn: linear-gradient(to right, #F97316, #EA580C);
+    --gradient-dark: linear-gradient(to bottom, #0F172A, #0A1929);
+
+    /* Fonts */
+    --font-heading: 'Space Grotesk', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-brand: 'Montserrat', sans-serif;
+}
+
+/* --- Global Resets & Typography --- */
+body {
+    font-family: var(--font-body);
+    transition: background-color 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    letter-spacing: -0.02em;
+}
+
+.font-brand {
+    font-family: var(--font-brand);
+}
+
+/* --- Custom Utilities --- */
+
+/* Cosmic Gradient Text */
+.text-gradient-cosmic {
+    background: var(--gradient-cosmic);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Glassmorphism */
+.glass {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glass-dark {
+    background: rgba(15, 23, 42, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* Cosmic Background */
+.bg-cosmic {
+    background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #0f172a 100%);
+}
+
+.bg-stars {
+    background-image: url('../images/stars-bg.png');
+    /* Placeholder */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+/* --- Animations --- */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 15px rgba(124, 58, 237, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(124, 58, 237, 0.5);
+    }
+}
+
+.animate-pulse-glow {
+    animation: pulse-glow 3s infinite;
+}
+
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+/* --- Component Overrides --- */
+
+/* Buttons */
+.btn-primary {
+    background-image: var(--gradient-cosmic);
+    transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px -10px rgba(124, 58, 237, 0.5);
+}
+
+/* Cards */
+.card-hover {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Dark Mode Specifics */
+.dark .dark-glow {
+    box-shadow: 0 0 40px rgba(20, 184, 166, 0.15);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+.dark ::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 4px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+    background: #334155;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+/* Navigation Dropdown Fix */
+.group:hover .group-hover\:block {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

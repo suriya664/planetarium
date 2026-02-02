@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cosmic Planetarium - Journey Through the Stars</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+
+    <!-- Tailwind CSS (CDN for immediate usage) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0C4A6E',
+                        secondary: '#7C3AED',
+                        accent: '#14B8A6',
+                        accent2: '#F97316',
+                        dark: '#0A1929',
+                        darker: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        brand: ['Montserrat', 'sans-serif'],
+                    },
+                    backgroundImage: {
+                        'cosmic-gradient': 'linear-gradient(135deg, #0C4A6E 0%, #7C3AED 50%, #14B8A6 100%)',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 transition-all duration-300 fixed-header-transparent" id="main-header">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white shadow-lg group-hover:animate-pulse-glow">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span
+                        class="font-brand font-bold text-xl md:text-2xl tracking-tight dark:text-white text-primary uppercase">
+                        Cosmic<span class="text-accent">Dome</span>
+                    </span>
+                </a>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link font-medium hover:text-accent transition-colors flex items-center">
+                            Home <i class="lucide-chevron-down w-4 h-4 ml-1"></i>
+                        </button>
+                        <!-- Dropdown -->
+                        <div
+                            class="absolute top-full left-0 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl py-2 hidden group-hover:block border border-slate-100 dark:border-slate-700 mt-2">
+                            <a href="index.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
+                                v1 (Immersive)</a>
+                            <a href="index-v2.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
+                                v2 (Schedule)</a>
+                        </div>
+                    </div>
+                    <a href="shows-schedule.html"
+                        class="nav-link font-medium hover:text-accent transition-colors">Shows</a>
+                    <a href="visit-info.html" class="nav-link font-medium hover:text-accent transition-colors">Visit</a>
+                    <a href="education.html" class="nav-link font-medium hover:text-accent transition-colors">Learn</a>
+                    <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                </nav>
+
+                <!-- Right Actions -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button class="p-2 hover:text-accent transition-colors" aria-label="Search">
+                        <i data-lucide="search" class="w-5 h-5"></i>
+                    </button>
+                    <a href="ticket-purchase.html" class="p-2 hover:text-accent transition-colors relative"
+                        aria-label="Cart">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span
+                            class="absolute -top-1 -right-1 w-4 h-4 bg-accent2 text-white text-[10px] font-bold flex items-center justify-center rounded-full">0</span>
+                    </a>
+
+                    <!-- Theme Toggle -->
+                    <button id="theme-toggle" class="p-2 hover:text-accent transition-colors"
+                        aria-label="Toggle Dark Mode">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+
+                    <a href="ticket-purchase.html"
+                        class="btn-primary px-6 py-2.5 rounded-full text-white font-semibold text-sm shadow-lg shadow-secondary/30 hover:shadow-secondary/50 flex items-center gap-2">
+                        <span>Buy Tickets</span>
+                        <i data-lucide="ticket" class="w-4 h-4"></i>
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-lg font-medium">
+            <a href="index.html" class="text-accent">Home</a>
+            <a href="shows-schedule.html">Shows & Tickets</a>
+            <a href="visit-info.html">Plan Your Visit</a>
+            <a href="education.html">Education</a>
+            <a href="about.html">About Us</a>
+            <a href="login.html">Member Login</a>
+        </nav>
+        <div class="mt-auto flex items-center justify-between pt-8 border-t dark:border-slate-800">
+            <button class="theme-toggle-mobile flex items-center gap-2">
+                <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <span>Switch Theme</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Video/Image Simulation -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1543616993-49d799d14620?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-full object-cover" alt="Space Background">
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/60 via-dark/40 to-slate-50 dark:to-dark"></div>
+        </div>
+
+        <div class="container mx-auto px-4 relative z-10 text-center pt-20">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/10 backdrop-blur border border-white/20 text-accent font-medium text-sm mb-6 animate-float">
+                ✨ Experience the Infinite
+            </span>
+            <h1
+                class="text-5xl md:text-7xl lg:text-8xl font-heading font-bold text-white mb-6 leading-tight tracking-tight drop-shadow-xl">
+                Journey Through <br>
+                <span class="text-gradient-cosmic">The Cosmos</span>
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+                Experience the wonders of space on our state-of-the-art 60-foot dome. Immerse yourself in the universe.
+            </p>
+
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="ticket-purchase.html"
+                    class="btn-primary px-8 py-4 rounded-full text-white font-bold text-lg shadow-xl shadow-accent/20 w-full sm:w-auto">
+                    Book Tickets Now
+                </a>
+                <a href="shows-schedule.html"
+                    class="px-8 py-4 rounded-full bg-white/10 backdrop-blur border border-white/30 text-white font-semibold hover:bg-white/20 transition-all w-full sm:w-auto">
+                    View Schedule
+                </a>
+            </div>
+
+            <!-- Live Info Bar -->
+            <div
+                class="mt-16 mx-auto max-w-4xl glass rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center justify-around gap-4 md:gap-8 animate-fade-in-up">
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-accent/20 rounded-full text-accent">
+                        <i data-lucide="film" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Now Showing</p>
+                        <p class="text-white font-semibold">Cosmic Wonders</p>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-10 bg-white/10"></div>
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-secondary/20 rounded-full text-secondary">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Today's Shows</p>
+                        <p class="text-white font-semibold">5 Performances</p>
+                    </div>
+                </div>
+                <div class="hidden md:block w-px h-10 bg-white/10"></div>
+                <div class="flex items-center gap-3">
+                    <div class="p-2 bg-orange-500/20 rounded-full text-orange-500">
+                        <i data-lucide="tag" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left">
+                        <p class="text-xs text-slate-400 uppercase tracking-wider">Tickets From</p>
+                        <p class="text-white font-semibold">$12.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scroll Indicator -->
+            <div class="absolute bottom-[-100px] left-1/2 transform -translate-x-1/2 animate-bounce">
+                <i data-lucide="arrow-down" class="text-white/50 w-6 h-6"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Today's Shows -->
+    <section class="py-20 bg-slate-50 dark:bg-dark relative">
+        <div class="container mx-auto px-4">
+            <div class="flex items-end justify-between mb-12">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-2">Showing Today</h2>
+                    <p class="text-slate-600 dark:text-slate-400">Catch a show before the day ends.</p>
+                </div>
+                <a href="shows-schedule.html"
+                    class="hidden md:flex items-center text-accent hover:text-accent-2 font-medium transition-colors">
+                    View Full Schedule <i data-lucide="arrow-right" class="w-4 h-4 ml-2"></i>
+                </a>
+            </div>
+
+            <!-- Horizontal Scroll Container -->
+            <div class="flex overflow-x-auto gap-6 pb-8 snap-x">
+                <!-- Card 1 -->
+                <div
+                    class="min-w-[300px] md:min-w-[340px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden card-hover snap-center border border-slate-100 dark:border-slate-700">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?w=500&auto=format&fit=crop&q=60"
+                            class="w-full h-full object-cover" alt="Cosmic Wonders">
+                        <span
+                            class="absolute top-4 right-4 bg-black/60 backdrop-blur text-white text-xs font-bold px-3 py-1 rounded-full">45
+                            min</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold font-heading">Cosmic Wonders</h3>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">A breathtaking journey
+                            through the deepest corners of our universe.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-slate-100 dark:bg-slate-700 rounded text-xs font-medium text-slate-500 line-through">2:00
+                                PM</span>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-green-400 rounded text-xs font-medium border border-green-200 dark:border-green-800">4:00
+                                PM</span>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-green-400 rounded text-xs font-medium border border-green-200 dark:border-green-800">7:00
+                                PM</span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-bold text-lg text-primary dark:text-white">$12.00</span>
+                            <a href="ticket-purchase.html"
+                                class="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg text-sm font-semibold hover:bg-accent transition-colors">Book</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 2 -->
+                <div
+                    class="min-w-[300px] md:min-w-[340px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden card-hover snap-center border border-slate-100 dark:border-slate-700">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=500&auto=format&fit=crop&q=60"
+                            class="w-full h-full object-cover" alt="Asteroid Mission">
+                        <span
+                            class="absolute top-4 right-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">Interactive</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold font-heading">Asteroid Mission</h3>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">Join the crew and help
+                            steer our ship through an asteroid field!</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-green-400 rounded text-xs font-medium border border-green-200 dark:border-green-800">5:30
+                                PM</span>
+                            <span
+                                class="px-3 py-1 bg-green-100 dark:bg-emerald-900/30 text-green-700 dark:text-green-400 rounded text-xs font-medium border border-green-200 dark:border-green-800">8:00
+                                PM</span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-bold text-lg text-primary dark:text-white">$15.00</span>
+                            <a href="ticket-purchase.html"
+                                class="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg text-sm font-semibold hover:bg-accent transition-colors">Book</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Card 3 -->
+                <div
+                    class="min-w-[300px] md:min-w-[340px] bg-white dark:bg-slate-800 rounded-2xl shadow-xl overflow-hidden card-hover snap-center border border-slate-100 dark:border-slate-700">
+                    <div class="h-48 bg-gray-200 relative">
+                        <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?w=500&auto=format&fit=crop&q=60"
+                            class="w-full h-full object-cover" alt="Night Sky">
+                        <span
+                            class="absolute top-4 right-4 bg-secondary text-white text-xs font-bold px-3 py-1 rounded-full">Live</span>
+                    </div>
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-2">
+                            <h3 class="text-xl font-bold font-heading">Night Sky Tonight</h3>
+                            <div class="flex text-yellow-400 text-xs">
+                                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                                    class="fas fa-star"></i><i class="fas fa-star"></i>
+                            </div>
+                        </div>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mb-4 line-clamp-2">A guided tour of the
+                            stars, planets, and constellations visible tonight.</p>
+
+                        <div class="flex flex-wrap gap-2 mb-6">
+                            <span
+                                class="px-3 py-1 bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400 rounded text-xs font-medium border border-orange-200 dark:border-orange-800">Only
+                                4 left</span>
+                        </div>
+
+                        <div class="flex items-center justify-between mt-auto">
+                            <span class="font-bold text-lg text-primary dark:text-white">$12.00</span>
+                            <a href="ticket-purchase.html"
+                                class="px-4 py-2 bg-slate-900 dark:bg-white text-white dark:text-slate-900 rounded-lg text-sm font-semibold hover:bg-accent transition-colors">Book</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Section -->
+    <section class="py-20 bg-white dark:bg-[#081221]">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl md:text-5xl font-heading font-bold mb-12 text-center">Featured Experiences</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="group relative overflow-hidden rounded-3xl h-[400px] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=600&auto=format&fit=crop&q=60"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Journey to Stars">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <span
+                            class="inline-block px-3 py-1 bg-accent text-white text-xs font-bold rounded mb-3 w-fit">POPULAR</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Journey to the Stars</h3>
+                        <p
+                            class="text-slate-300 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                            Narrated by Neil deGrasse Tyson, experience the life and death of stars.
+                        </p>
+                        <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold w-fit">Book
+                            Now</button>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="group relative overflow-hidden rounded-3xl h-[400px] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1543616993-49d799d14620?w=600&auto=format&fit=crop&q=60"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Dome Experience">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <span
+                            class="inline-block px-3 py-1 bg-secondary text-white text-xs font-bold rounded mb-3 w-fit">TECHNOLOGY</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">8K Dome Projection</h3>
+                        <p
+                            class="text-slate-300 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                            Witness the sharpest, most immersive universe simulation on Earth.
+                        </p>
+                        <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold w-fit">Learn
+                            More</button>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="group relative overflow-hidden rounded-3xl h-[400px] cursor-pointer">
+                    <img src="https://images.unsplash.com/photo-1505506874110-6a7a69069a08?w=600&auto=format&fit=crop&q=60"
+                        class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                        alt="Family Event">
+                    <div
+                        class="absolute inset-0 bg-gradient-to-t from-dark/90 via-dark/40 to-transparent flex flex-col justify-end p-8">
+                        <span
+                            class="inline-block px-3 py-1 bg-orange-500 text-white text-xs font-bold rounded mb-3 w-fit">EVENTS</span>
+                        <h3 class="text-2xl font-bold text-white mb-2">Member's Night</h3>
+                        <p
+                            class="text-slate-300 mb-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                            Exclusive access for members every Thursday night. Join the club!
+                        </p>
+                        <button class="btn-primary px-6 py-2 rounded-lg text-white font-semibold w-fit">Join
+                            Membership</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Visit / Icons -->
+    <section class="py-20 bg-slate-50 dark:bg-dark">
+        <div class="container mx-auto px-4">
+            <div class="text-center max-w-2xl mx-auto mb-16">
+                <span class="text-accent font-semibold tracking-wider uppercase text-sm">Why Visit Us?</span>
+                <h2 class="text-3xl md:text-4xl font-heading font-bold mt-2">Your Planetarium Experience</h2>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <!-- Item 1 -->
+                <div
+                    class="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm text-center hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-16 h-16 bg-primary/10 dark:bg-primary/30 rounded-full flex items-center justify-center mx-auto mb-4 text-primary dark:text-blue-300">
+                        <i data-lucide="monitor" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">60ft Dome</h3>
+                    <p class="text-slate-500 text-sm">Immersive full-dome projection with 8K visuals.</p>
+                </div>
+                <!-- Item 2 -->
+                <div
+                    class="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm text-center hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-16 h-16 bg-secondary/10 dark:bg-secondary/30 rounded-full flex items-center justify-center mx-auto mb-4 text-secondary dark:text-purple-300">
+                        <i data-lucide="armchair" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Premium Seating</h3>
+                    <p class="text-slate-500 text-sm">180 reclining seats for the optimal viewing angle.</p>
+                </div>
+                <!-- Item 3 -->
+                <div
+                    class="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm text-center hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-16 h-16 bg-accent/10 dark:bg-accent/30 rounded-full flex items-center justify-center mx-auto mb-4 text-accent dark:text-teal-300">
+                        <i data-lucide="users" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Expert Guides</h3>
+                    <p class="text-slate-500 text-sm">Live presentations by professional astronomers.</p>
+                </div>
+                <!-- Item 4 -->
+                <div
+                    class="p-6 bg-white dark:bg-slate-800 rounded-2xl shadow-sm text-center hover:shadow-lg transition-shadow">
+                    <div
+                        class="w-16 h-16 bg-orange-500/10 dark:bg-orange-500/30 rounded-full flex items-center justify-center mx-auto mb-4 text-orange-500 dark:text-orange-300">
+                        <i data-lucide="heart" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Family Friendly</h3>
+                    <p class="text-slate-500 text-sm">Shows and programs for every age group.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Info -->
+    <section class="py-16 bg-primary text-white relative overflow-hidden">
+        <div class="absolute inset-0 bg-stars opacity-50"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center md:text-left">
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2 text-accent">Location & Hours</h4>
+                    <p class="text-sm opacity-90 mb-2">123 Cosmic Way, Galaxy City</p>
+                    <p class="text-sm opacity-90">Wed-Sun: 10 AM - 8 PM</p>
+                    <a href="visit-info.html" class="inline-block mt-3 text-sm underline hover:text-accent">Get
+                        Directions</a>
+                </div>
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2 text-accent">Tickets</h4>
+                    <p class="text-sm opacity-90">Adults: $15</p>
+                    <p class="text-sm opacity-90">Children: $12</p>
+                    <a href="ticket-purchase.html" class="inline-block mt-3 text-sm underline hover:text-accent">View
+                        All Pricing</a>
+                </div>
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2 text-accent">Parking</h4>
+                    <p class="text-sm opacity-90">Free onsite parking available for all visitors.</p>
+                    <a href="visit-info.html" class="inline-block mt-3 text-sm underline hover:text-accent">Plan Your
+                        Visit</a>
+                </div>
+                <div class="glass p-6 rounded-xl">
+                    <h4 class="font-bold text-lg mb-2 text-accent">Groups</h4>
+                    <p class="text-sm opacity-90">Special rates for schools and groups of 15+.</p>
+                    <a href="education.html" class="inline-block mt-3 text-sm underline hover:text-accent">Book Group
+                        Tour</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-darker text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Branding -->
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="font-brand font-bold text-xl text-white uppercase">Cosmic<span
+                                class="text-accent">Dome</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6 text-slate-400">
+                        Inspiring wonder and curiosity through immersive space experiences and education.
+                    </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+                <!-- Visit -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Visit</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="ticket-purchase.html" class="hover:text-accent transition-colors">Buy Tickets</a>
+                        </li>
+                        <li><a href="shows-schedule.html" class="hover:text-accent transition-colors">Show Schedule</a>
+                        </li>
+                        <li><a href="visit-info.html" class="hover:text-accent transition-colors">Directions &
+                                Parking</a></li>
+                        <li><a href="visit-info.html" class="hover:text-accent transition-colors">Accessibility</a></li>
+                    </ul>
+                </div>
+
+                <!-- Learn -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Learn</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="education.html" class="hover:text-accent transition-colors">School Programs</a>
+                        </li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Astronomy Camp</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Star Gazing Guides</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Educator Resources</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i> 123
+                            Cosmic Way, Galaxy City, ST 12345</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-3 text-accent"></i> (555) 123-4567</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@planetarium.org</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <div class="mb-4 md:mb-0">
+                    &copy; 2024 CosmicDome Planetarium. All rights reserved.
+                </div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Init Script -->
+    <script src="assets/js/main.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Membership - Cosmic Planetarium</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0C4A6E',
+                        secondary: '#7C3AED',
+                        accent: '#14B8A6',
+                        accent2: '#F97316',
+                        dark: '#0A1929',
+                        darker: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        brand: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header (Standard) -->
+    <header class="fixed w-full z-50 transition-all duration-300 fixed-header-transparent" id="main-header">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white shadow-lg group-hover:animate-pulse-glow">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span
+                        class="font-brand font-bold text-xl md:text-2xl tracking-tight dark:text-white text-primary uppercase">
+                        Cosmic<span class="text-accent">Dome</span>
+                    </span>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link font-medium hover:text-accent transition-colors flex items-center">
+                            Home <i class="lucide-chevron-down w-4 h-4 ml-1"></i>
+                        </button>
+                        <div
+                            class="absolute top-full left-0 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl py-2 hidden group-hover:block border border-slate-100 dark:border-slate-700 mt-2">
+                            <a href="index.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
+                                v1 (Immersive)</a>
+                            <a href="index-v2.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
+                                v2 (Schedule)</a>
+                        </div>
+                    </div>
+                    <a href="shows-schedule.html"
+                        class="nav-link font-medium hover:text-accent transition-colors">Shows</a>
+                    <a href="visit-info.html" class="nav-link font-medium hover:text-accent transition-colors">Visit</a>
+                    <a href="education.html" class="nav-link font-medium hover:text-accent transition-colors">Learn</a>
+                    <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button class="p-2 hover:text-accent transition-colors"><i data-lucide="search"
+                            class="w-5 h-5"></i></button>
+                    <a href="ticket-purchase.html" class="p-2 hover:text-accent transition-colors relative">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span
+                            class="absolute -top-1 -right-1 w-4 h-4 bg-accent2 text-white text-[10px] font-bold flex items-center justify-center rounded-full">0</span>
+                    </a>
+                    <button id="theme-toggle" class="p-2 hover:text-accent transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <a href="ticket-purchase.html"
+                        class="btn-primary px-6 py-2.5 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-secondary/50 flex items-center gap-2">
+                        <span>Buy Tickets</span>
+                        <i data-lucide="ticket" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white"><i data-lucide="menu"
+                        class="w-6 h-6"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-lg font-medium">
+            <a href="index.html">Home</a>
+            <a href="shows-schedule.html">Shows & Tickets</a>
+            <a href="visit-info.html">Plan Your Visit</a>
+            <a href="education.html">Education</a>
+            <a href="about.html">About Us</a>
+            <a href="login.html">Member Login</a>
+        </nav>
+        <div class="mt-auto flex items-center justify-between pt-8 border-t dark:border-slate-800">
+            <button class="theme-toggle-mobile flex items-center gap-2">
+                <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <span>Switch Theme</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Hero -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-full object-cover" alt="Happy Family">
+            <div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <span
+                class="inline-block py-1 px-3 rounded-full bg-white/20 backdrop-blur border border-white/30 text-white font-medium text-sm mb-6 animate-float">
+                🚀 Join the Club
+            </span>
+            <h1 class="text-4xl md:text-7xl font-heading font-bold mb-6">Become a Member</h1>
+            <p class="text-xl md:text-2xl text-slate-100 max-w-2xl mx-auto font-light mb-8">
+                Unlimited cosmic adventures. One low price.
+            </p>
+            <a href="#tiers"
+                class="btn-primary px-8 py-3 rounded-full text-white font-bold shadow-lg hover:shadow-xl transition-all">
+                View Plans
+            </a>
+        </div>
+    </section>
+
+    <!-- Benefits Grid -->
+    <section class="py-16 bg-white dark:bg-darker">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-heading font-bold mb-4">Why Join?</h2>
+                <p class="text-slate-500 max-w-2xl mx-auto">Membership pays for itself in just 3 visits.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-blue-100 dark:bg-blue-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-blue-600 dark:text-blue-300 group-hover:scale-110 transition-transform">
+                        <i data-lucide="infinity" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Unlimited Shows</h3>
+                    <p class="text-sm text-slate-500">See any show, any time, as often as you want.</p>
+                </div>
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-purple-100 dark:bg-purple-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-purple-600 dark:text-purple-300 group-hover:scale-110 transition-transform">
+                        <i data-lucide="ticket" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Guest Passes</h3>
+                    <p class="text-sm text-slate-500">Bring friends for free with regular guest passes.</p>
+                </div>
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-teal-100 dark:bg-teal-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-teal-600 dark:text-teal-300 group-hover:scale-110 transition-transform">
+                        <i data-lucide="star" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Priority Booking</h3>
+                    <p class="text-sm text-slate-500">Reserve best seats 7 days before general public.</p>
+                </div>
+                <div class="text-center group">
+                    <div
+                        class="w-16 h-16 bg-orange-100 dark:bg-orange-900 rounded-2xl flex items-center justify-center mx-auto mb-4 text-orange-600 dark:text-orange-300 group-hover:scale-110 transition-transform">
+                        <i data-lucide="gift" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-2">Exclusive Discounts</h3>
+                    <p class="text-sm text-slate-500">20% off at the gift shop and special events.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Tiers -->
+    <section class="py-20 bg-slate-50 dark:bg-dark" id="tiers">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto items-center">
+
+                <!-- Individual -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-2xl font-bold font-heading mb-2">Individual</h3>
+                    <div class="text-4xl font-bold mb-6 text-primary dark:text-white">$120<span
+                            class="text-lg font-normal text-slate-500">/year</span></div>
+                    <p class="text-slate-500 dark:text-slate-400 mb-8 text-sm">Perfect for solo explorers who love
+                        space.</p>
+
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Unlimited Shows
+                            for 1</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 2 Guest Passes
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Priority Booking
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 20% Gift Shop
+                            Discount</li>
+                    </ul>
+
+                    <a href="register.html?plan=individual"
+                        class="block w-full py-3 rounded-xl border-2 border-primary text-primary dark:border-white dark:text-white font-bold text-center hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-primary transition-all">Choose
+                        Plan</a>
+                </div>
+
+                <!-- Family (Featured) -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-2xl border-2 border-accent relative transform md:-translate-y-4 z-10">
+                    <div
+                        class="absolute top-0 right-0 left-0 bg-accent text-white text-center text-xs font-bold py-1 uppercase tracking-widest rounded-t-2xl">
+                        Most Popular</div>
+                    <h3 class="text-2xl font-bold font-heading mb-2 mt-2">Family</h3>
+                    <div class="text-4xl font-bold mb-6 text-primary dark:text-white">$200<span
+                            class="text-lg font-normal text-slate-500">/year</span></div>
+                    <p class="text-slate-500 dark:text-slate-400 mb-8 text-sm">Best value for families of four.</p>
+
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span
+                                class="font-bold">Unlimited Shows for 4</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 4 Guest Passes
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Kids' Birthday
+                            Surprise</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Family Event
+                            Access</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> All Individual
+                            Perls</li>
+                    </ul>
+
+                    <a href="register.html?plan=family"
+                        class="block w-full py-4 rounded-xl bg-gradient-to-r from-secondary to-accent text-white font-bold text-center hover:shadow-lg hover:shadow-accent/40 transition-all">Choose
+                        Family</a>
+                </div>
+
+                <!-- Supporter -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-3xl p-8 shadow-xl border border-slate-100 dark:border-slate-700">
+                    <h3 class="text-2xl font-bold font-heading mb-2">Supporter</h3>
+                    <div class="text-4xl font-bold mb-6 text-primary dark:text-white">$500<span
+                            class="text-lg font-normal text-slate-500">/year</span></div>
+                    <p class="text-slate-500 dark:text-slate-400 mb-8 text-sm">Support our educational mission.</p>
+
+                    <ul class="space-y-4 mb-8 text-sm">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> <span
+                                class="font-bold">Tax Deductible Donation</span></li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> 8 Guest Passes
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> VIP Event Access
+                        </li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Donor Wall
+                            Recognition</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Private Dome
+                            Rental (1)</li>
+                    </ul>
+
+                    <a href="register.html?plan=supporter"
+                        class="block w-full py-3 rounded-xl border-2 border-primary text-primary dark:border-white dark:text-white font-bold text-center hover:bg-primary hover:text-white dark:hover:bg-white dark:hover:text-primary transition-all">Support
+                        Us</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="py-20 bg-white dark:bg-darker">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-heading font-bold text-center mb-12">Member Stories</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="glass p-8 rounded-2xl dark:bg-slate-800/50">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&auto=format&fit=crop&q=60"
+                            class="w-12 h-12 rounded-full object-cover mr-4" alt="Member">
+                        <div>
+                            <h4 class="font-bold">Emily & Kids</h4>
+                            <p class="text-xs text-slate-500">Family Members since 2021</p>
+                        </div>
+                    </div>
+                    <p class="italic text-slate-600 dark:text-slate-300">"The CosmicDome is our go-to weekend spot. The
+                        kids learn something new every time, and the family membership pays for itself so quickly!"</p>
+                </div>
+                <div class="glass p-8 rounded-2xl dark:bg-slate-800/50">
+                    <div class="flex items-center mb-4">
+                        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&auto=format&fit=crop&q=60"
+                            class="w-12 h-12 rounded-full object-cover mr-4" alt="Member">
+                        <div>
+                            <h4 class="font-bold">James T.</h4>
+                            <p class="text-xs text-slate-500">Individual Member since 2019</p>
+                        </div>
+                    </div>
+                    <p class="italic text-slate-600 dark:text-slate-300">"As an astronomy enthusiast, having unlimited
+                        access to the dome shows is incredible. The priority booking for special events is a huge plus."
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (Standard) -->
+    <footer class="bg-darker text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="font-brand font-bold text-xl text-white uppercase">Cosmic<span
+                                class="text-accent">Dome</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6 text-slate-400">
+                        Inspiring wonder and curiosity through immersive space experiences and education.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Visit</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="ticket-purchase.html" class="hover:text-accent transition-colors">Buy Tickets</a>
+                        </li>
+                        <li><a href="shows-schedule.html" class="hover:text-accent transition-colors">Show Schedule</a>
+                        </li>
+                        <li><a href="visit-info.html" class="hover:text-accent transition-colors">Directions &
+                                Parking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Learn</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="education.html" class="hover:text-accent transition-colors">School Programs</a>
+                        </li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Astronomy Camp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i> 123
+                            Cosmic Way, Galaxy City</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@planetarium.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <div class="mb-4 md:mb-0">&copy; 2024 CosmicDome Planetarium. All rights reserved.</div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

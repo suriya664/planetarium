@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Education Programs - Cosmic Planetarium</title>
+    <link rel="icon" type="image/svg+xml" href="assets/images/logo.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0C4A6E',
+                        secondary: '#7C3AED',
+                        accent: '#14B8A6',
+                        accent2: '#F97316',
+                        dark: '#0A1929',
+                        darker: '#0F172A',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Space Grotesk', 'sans-serif'],
+                        brand: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-slate-100 transition-colors duration-300">
+
+    <!-- Header (Standard) -->
+    <header class="fixed w-full z-50 transition-all duration-300 fixed-header-transparent" id="main-header">
+        <div class="container mx-auto px-4 md:px-6">
+            <div class="flex items-center justify-between h-20">
+                <a href="index.html" class="flex items-center space-x-2 group">
+                    <div
+                        class="w-10 h-10 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white shadow-lg group-hover:animate-pulse-glow">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <span
+                        class="font-brand font-bold text-xl md:text-2xl tracking-tight dark:text-white text-primary uppercase">
+                        Cosmic<span class="text-accent">Dome</span>
+                    </span>
+                </a>
+
+                <nav class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="nav-link font-medium hover:text-accent transition-colors flex items-center">
+                            Home <i class="lucide-chevron-down w-4 h-4 ml-1"></i>
+                        </button>
+                        <div
+                            class="absolute top-full left-0 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl py-2 hidden group-hover:block border border-slate-100 dark:border-slate-700 mt-2">
+                            <a href="index.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
+                                v1 (Immersive)</a>
+                            <a href="index-v2.html"
+                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
+                                v2 (Schedule)</a>
+                        </div>
+                    </div>
+                    <a href="shows-schedule.html"
+                        class="nav-link font-medium hover:text-accent transition-colors">Shows</a>
+                    <a href="visit-info.html" class="nav-link font-medium hover:text-accent transition-colors">Visit</a>
+                    <a href="education.html"
+                        class="nav-link font-medium hover:text-accent transition-colors text-accent">Learn</a>
+                    <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                </nav>
+
+                <div class="hidden lg:flex items-center space-x-4">
+                    <button class="p-2 hover:text-accent transition-colors"><i data-lucide="search"
+                            class="w-5 h-5"></i></button>
+                    <a href="ticket-purchase.html" class="p-2 hover:text-accent transition-colors relative">
+                        <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                        <span
+                            class="absolute -top-1 -right-1 w-4 h-4 bg-accent2 text-white text-[10px] font-bold flex items-center justify-center rounded-full">0</span>
+                    </a>
+                    <button id="theme-toggle" class="p-2 hover:text-accent transition-colors">
+                        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                        <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                    </button>
+                    <a href="ticket-purchase.html"
+                        class="btn-primary px-6 py-2.5 rounded-full text-white font-semibold text-sm shadow-lg hover:shadow-secondary/50 flex items-center gap-2">
+                        <span>Buy Tickets</span>
+                        <i data-lucide="ticket" class="w-4 h-4"></i>
+                    </a>
+                </div>
+                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white"><i data-lucide="menu"
+                        class="w-6 h-6"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobile-menu"
+        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in">
+        <div class="flex justify-end mb-8">
+            <button id="close-menu-btn" class="p-2">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <nav class="flex flex-col space-y-6 text-lg font-medium">
+            <a href="index.html">Home</a>
+            <a href="shows-schedule.html">Shows & Tickets</a>
+            <a href="visit-info.html">Plan Your Visit</a>
+            <a href="education.html" class="text-accent">Education</a>
+            <a href="about.html">About Us</a>
+            <a href="login.html">Member Login</a>
+        </nav>
+        <div class="mt-auto flex items-center justify-between pt-8 border-t dark:border-slate-800">
+            <button class="theme-toggle-mobile flex items-center gap-2">
+                <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+                <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
+                <span>Switch Theme</span>
+            </button>
+        </div>
+    </div>
+
+
+    <!-- Hero -->
+    <section class="relative h-[60vh] flex items-center justify-center overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.unsplash.com/photo-1517420879524-86d64ac2f339?q=80&w=2070&auto=format&fit=crop"
+                class="w-full h-full object-cover" alt="Students Learning">
+            <div class="absolute inset-0 bg-primary/80 mix-blend-multiply"></div>
+        </div>
+        <div class="container mx-auto px-4 relative z-10 text-center text-white">
+            <h1 class="text-4xl md:text-7xl font-heading font-bold mb-6">Learn & Explore</h1>
+            <p class="text-xl md:text-2xl text-slate-100 max-w-2xl mx-auto font-light mb-8">
+                Inspiring the next generation of space explorers through immersive programs.
+            </p>
+            <a href="#programs"
+                class="btn-primary px-8 py-3 rounded-full text-white font-bold shadow-lg hover:shadow-xl transition-all">
+                View Programs
+            </a>
+        </div>
+    </section>
+
+    <!-- Programs List -->
+    <section class="py-20 bg-white dark:bg-darker" id="programs">
+        <div class="container mx-auto px-4">
+
+            <!-- Program 1: Field Trips -->
+            <div class="flex flex-col lg:flex-row items-center gap-12 mb-20">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1509191442429-dd15622a6326?w=800&auto=format&fit=crop&q=60"
+                        class="rounded-3xl shadow-xl w-full object-cover h-80" alt="Field Trip">
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="p-2 bg-accent/10 rounded-lg text-accent"><i data-lucide="school"
+                                class="w-6 h-6"></i></span>
+                        <h3 class="text-3xl font-heading font-bold">School Field Trips</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 text-lg">
+                        Bring the cosmos to your classroom! Our curriculum-aligned programs are designed for grades
+                        K-12.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Next Gen Science
+                            Standards Aligned</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Hands-on Science
+                            Labs</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Q&A with real
+                            Astronomers</li>
+                    </ul>
+                    <button
+                        class="px-6 py-3 rounded-lg border border-primary text-primary dark:border-white dark:text-white font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        Plan a Field Trip
+                    </button>
+                </div>
+            </div>
+
+            <!-- Program 2: Summer Camps -->
+            <div class="flex flex-col lg:flex-row-reverse items-center gap-12 mb-20">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1544976766-993d6c174d81?w=800&auto=format&fit=crop&q=60"
+                        class="rounded-3xl shadow-xl w-full object-cover h-80" alt="Summer Camp">
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="p-2 bg-secondary/10 rounded-lg text-secondary"><i data-lucide="sun"
+                                class="w-6 h-6"></i></span>
+                        <h3 class="text-3xl font-heading font-bold">Summer Space Camps</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 text-lg">
+                        A week-long adventure for aspiring astronauts ages 7-14. Build rockets, train like an astronaut,
+                        and explore Mars.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Rocketry
+                            Workshops</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Telescope
+                            Training</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Daily Dome Shows
+                        </li>
+                    </ul>
+                    <button
+                        class="px-6 py-3 rounded-lg border border-primary text-primary dark:border-white dark:text-white font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        Register for Camp
+                    </button>
+                </div>
+            </div>
+
+            <!-- Program 3: Scout Badges -->
+            <div class="flex flex-col lg:flex-row items-center gap-12">
+                <div class="lg:w-1/2">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&auto=format&fit=crop&q=60"
+                        class="rounded-3xl shadow-xl w-full object-cover h-80" alt="Scouts">
+                </div>
+                <div class="lg:w-1/2">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="p-2 bg-accent2/10 rounded-lg text-accent2"><i data-lucide="award"
+                                class="w-6 h-6"></i></span>
+                        <h3 class="text-3xl font-heading font-bold">Scout Badge Days</h3>
+                    </div>
+                    <p class="text-slate-600 dark:text-slate-300 mb-6 text-lg">
+                        Help your troop earn their Astronomy and Space Exploration badges with our specialized
+                        workshops.
+                    </p>
+                    <ul class="space-y-2 mb-8 text-slate-600 dark:text-slate-300">
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Meets Badge
+                            Requirements</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Private Showings
+                            available</li>
+                        <li class="flex items-center"><i class="fas fa-check text-green-500 mr-3"></i> Group Rates</li>
+                    </ul>
+                    <button
+                        class="px-6 py-3 rounded-lg border border-primary text-primary dark:border-white dark:text-white font-bold hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+                        Book a Scout Program
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer (Standard) -->
+    <footer class="bg-darker text-slate-300 pt-16 pb-8 border-t border-slate-800">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <a href="index.html" class="flex items-center space-x-2 mb-6">
+                        <div
+                            class="w-8 h-8 rounded-full bg-gradient-to-br from-secondary to-accent flex items-center justify-center text-white text-xs">
+                            <i class="fa-solid fa-star"></i>
+                        </div>
+                        <span class="font-brand font-bold text-xl text-white uppercase">Cosmic<span
+                                class="text-accent">Dome</span></span>
+                    </a>
+                    <p class="text-sm leading-relaxed mb-6 text-slate-400">
+                        Inspiring wonder and curiosity through immersive space experiences and education.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Visit</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="ticket-purchase.html" class="hover:text-accent transition-colors">Buy Tickets</a>
+                        </li>
+                        <li><a href="shows-schedule.html" class="hover:text-accent transition-colors">Show Schedule</a>
+                        </li>
+                        <li><a href="visit-info.html" class="hover:text-accent transition-colors">Directions &
+                                Parking</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Learn</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li><a href="education.html" class="hover:text-accent transition-colors">School Programs</a>
+                        </li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Astronomy Camp</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-bold mb-6">Contact</h4>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i> 123
+                            Cosmic Way, Galaxy City</li>
+                        <li class="flex items-center"><i class="fas fa-envelope mr-3 text-accent"></i>
+                            info@planetarium.org</li>
+                    </ul>
+                </div>
+            </div>
+            <div
+                class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
+                <div class="mb-4 md:mb-0">&copy; 2024 CosmicDome Planetarium. All rights reserved.</div>
+                <div class="flex space-x-6">
+                    <a href="#" class="hover:text-white">Privacy Policy</a>
+                    <a href="#" class="hover:text-white">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
