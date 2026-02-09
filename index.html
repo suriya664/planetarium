@@ -111,7 +111,7 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in text-slate-900 dark:text-white">
+        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in text-slate-900 dark:text-white overflow-y-auto">
         <div class="flex justify-between items-center mb-8">
             <a href="index.html" class="flex items-center space-x-2">
                 <div
@@ -135,7 +135,19 @@
             <a href="about.html">About Us</a>
             <a href="login.html">Member Login</a>
         </nav>
-        <div class="mt-auto flex items-center justify-between pt-8 border-t dark:border-slate-800">
+        <div class="mt-auto pt-8 border-t dark:border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+                <a href="ticket-purchase.html"
+                    class="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-accent transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span>Cart</span>
+                </a>
+                <button
+                    class="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-accent transition-colors">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                    <span>Search</span>
+                </button>
+            </div>
             <button class="theme-toggle-mobile flex items-center gap-2">
                 <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
                 <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
@@ -476,31 +488,39 @@
     <section class="py-16 bg-primary text-white relative overflow-hidden">
         <div class="absolute inset-0 bg-stars opacity-50"></div>
         <div class="container mx-auto px-4 relative z-10">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 text-center md:text-left">
-                <div class="glass p-6 rounded-xl">
-                    <h4 class="font-bold text-lg mb-2 text-accent">Location & Hours</h4>
-                    <p class="text-sm opacity-90 mb-2">123 Cosmic Way, Galaxy City</p>
-                    <p class="text-sm opacity-90">Wed-Sun: 10 AM - 8 PM</p>
-                    <a href="visit-info.html" class="inline-block mt-3 text-sm underline hover:text-accent">Get
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass p-6 rounded-xl flex flex-col h-full text-center">
+                    <h4 class="font-bold text-lg mb-3 text-accent">Location & Hours</h4>
+                    <div class="flex-grow">
+                        <p class="text-sm opacity-90 mb-1">123 Cosmic Way, Galaxy City</p>
+                        <p class="text-sm opacity-90">Wed-Sun: 10 AM - 8 PM</p>
+                    </div>
+                    <a href="visit-info.html" class="inline-block mt-4 text-sm underline hover:text-accent">Get
                         Directions</a>
                 </div>
-                <div class="glass p-6 rounded-xl">
-                    <h4 class="font-bold text-lg mb-2 text-accent">Tickets</h4>
-                    <p class="text-sm opacity-90">Adults: $15</p>
-                    <p class="text-sm opacity-90">Children: $12</p>
-                    <a href="ticket-purchase.html" class="inline-block mt-3 text-sm underline hover:text-accent">View
+                <div class="glass p-6 rounded-xl flex flex-col h-full text-center">
+                    <h4 class="font-bold text-lg mb-3 text-accent">Tickets</h4>
+                    <div class="flex-grow">
+                        <p class="text-sm opacity-90 mb-1">Adults: $15</p>
+                        <p class="text-sm opacity-90">Children: $12</p>
+                    </div>
+                    <a href="ticket-purchase.html" class="inline-block mt-4 text-sm underline hover:text-accent">View
                         All Pricing</a>
                 </div>
-                <div class="glass p-6 rounded-xl">
-                    <h4 class="font-bold text-lg mb-2 text-accent">Parking</h4>
-                    <p class="text-sm opacity-90">Free onsite parking available for all visitors.</p>
-                    <a href="visit-info.html" class="inline-block mt-3 text-sm underline hover:text-accent">Plan Your
+                <div class="glass p-6 rounded-xl flex flex-col h-full text-center">
+                    <h4 class="font-bold text-lg mb-3 text-accent">Parking</h4>
+                    <div class="flex-grow">
+                        <p class="text-sm opacity-90">Free onsite parking available for all visitors.</p>
+                    </div>
+                    <a href="visit-info.html" class="inline-block mt-4 text-sm underline hover:text-accent">Plan Your
                         Visit</a>
                 </div>
-                <div class="glass p-6 rounded-xl">
-                    <h4 class="font-bold text-lg mb-2 text-accent">Groups</h4>
-                    <p class="text-sm opacity-90">Special rates for schools and groups of 15+.</p>
-                    <a href="education.html" class="inline-block mt-3 text-sm underline hover:text-accent">Book Group
+                <div class="glass p-6 rounded-xl flex flex-col h-full text-center">
+                    <h4 class="font-bold text-lg mb-3 text-accent">Groups</h4>
+                    <div class="flex-grow">
+                        <p class="text-sm opacity-90">Special rates for schools and groups of 15+.</p>
+                    </div>
+                    <a href="education.html" class="inline-block mt-4 text-sm underline hover:text-accent">Book Group
                         Tour</a>
                 </div>
             </div>

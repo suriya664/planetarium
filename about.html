@@ -34,7 +34,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-slate-100 transition-colors duration-300">
+<body
+    class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-slate-100 transition-colors duration-300 overflow-x-hidden">
 
     <!-- Header -->
     <header class="fixed w-full z-50 transition-all duration-300 fixed-header-transparent text-white" id="main-header"
@@ -92,7 +93,7 @@
 
     <!-- Mobile Menu Overlay -->
     <div id="mobile-menu"
-        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in text-slate-900 dark:text-white">
+        class="fixed inset-0 z-[60] bg-white dark:bg-slate-900 hidden flex flex-col p-6 animate-fade-in text-slate-900 dark:text-white overflow-y-auto">
         <div class="flex justify-between items-center mb-8">
             <a href="index.html" class="flex items-center space-x-2">
                 <div
@@ -116,7 +117,19 @@
             <a href="about.html" class="text-accent">About Us</a>
             <a href="login.html">Member Login</a>
         </nav>
-        <div class="mt-auto flex items-center justify-between pt-8 border-t dark:border-slate-800">
+        <div class="mt-auto pt-8 border-t dark:border-slate-800">
+            <div class="flex items-center justify-between mb-6">
+                <a href="ticket-purchase.html"
+                    class="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-accent transition-colors">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <span>Cart</span>
+                </a>
+                <button
+                    class="flex items-center gap-2 text-slate-700 dark:text-slate-300 hover:text-accent transition-colors">
+                    <i data-lucide="search" class="w-5 h-5"></i>
+                    <span>Search</span>
+                </button>
+            </div>
             <button class="theme-toggle-mobile flex items-center gap-2">
                 <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
                 <i data-lucide="sun" class="w-5 h-5 hidden dark:block"></i>
@@ -142,7 +155,7 @@
     </section>
 
     <!-- History / Story -->
-    <section class="py-20 bg-white dark:bg-darker">
+    <section class="py-20 bg-white dark:bg-darker overflow-hidden">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row items-center gap-16">
                 <div class="md:w-1/2">
@@ -155,7 +168,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="md:w-1/2 text-left">
+                <div class="md:w-1/2 text-center">
                     <span class="text-accent font-bold uppercase tracking-wider text-sm mb-4 block">Our
                         Story</span>
                     <h2 class="text-3xl md:text-5xl font-heading font-bold mb-8">40 Years of Stargazing</h2>
