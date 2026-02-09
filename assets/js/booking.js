@@ -49,18 +49,21 @@ document.addEventListener('DOMContentLoaded', () => {
                 const isWheelchair = (r === rows - 1 && (s === 1 || s === count)); // Last row ends are wheelchair
 
                 const seatBtn = document.createElement('button');
-                // Base classes
-                seatBtn.className = `w-8 h-8 rounded-t-lg rounded-b-md text-[10px] font-medium transition-all duration-200 transform hover:scale-110 flex items-center justify-center relative group`;
+                // Base classes - changed to use icons and transparent background by default
+                seatBtn.className = `w-8 h-8 rounded text-lg transition-all duration-200 transform hover:scale-125 flex items-center justify-center relative group`;
 
                 // State classes
                 if (isOccupied) {
-                    seatBtn.className += ' bg-slate-300 dark:bg-slate-700 text-slate-500 cursor-not-allowed cursor-default';
+                    seatBtn.className += ' text-slate-300 dark:text-slate-700 cursor-not-allowed cursor-default';
+                    seatBtn.innerHTML = '<i class="fas fa-couch"></i>';
                     seatBtn.disabled = true;
                 } else if (isWheelchair) {
-                    seatBtn.className += ' bg-blue-100 hover:bg-blue-300 dark:bg-blue-900/50 dark:hover:bg-blue-800 text-blue-600 dark:text-blue-200';
+                    seatBtn.className += ' text-blue-500 dark:text-blue-400 hover:text-blue-600 dark:hover:text-blue-300 hover:shadow-blue-500/50';
                     seatBtn.innerHTML = '<i class="fas fa-wheelchair"></i>';
                 } else {
-                    seatBtn.className += ' bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 text-transparent hover:text-slate-500';
+                    // Available - soft gray
+                    seatBtn.className += ' text-slate-300 dark:text-slate-600 hover:text-accent hover:drop-shadow-[0_0_8px_rgba(20,184,166,0.6)]';
+                    seatBtn.innerHTML = '<i class="fas fa-couch"></i>';
                 }
 
                 seatBtn.dataset.id = seatId;
@@ -72,8 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 // Tooltip
                 const tooltip = document.createElement('span');
-                tooltip.className = 'absolute -top-8 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-xs py-1 px-2 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-nowrap';
-                tooltip.innerText = `Row ${rowLabel} Seat ${s} - $${pricing.standard}`;
+                tooltip.className = 'absolute -top-10 left-1/2 transform -translate-x-1/2 bg-slate-900 text-white text-xs font-bold py-1.5 px-3 rounded shadow-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-10 whitespace-nowrap border border-slate-700';
+                tooltip.innerText = `Row ${rowLabel} Seat ${s} • $${pricing.standard}`;
                 seatBtn.appendChild(tooltip);
 
                 rowDiv.appendChild(seatBtn);
@@ -100,13 +103,15 @@ document.addEventListener('DOMContentLoaded', () => {
         if (index > -1) {
             // Deselect
             selectedSeats.splice(index, 1);
-            btn.classList.remove('bg-secondary', 'text-white', 'shadow-lg', 'shadow-secondary/50', 'hover:bg-secondary');
-            btn.classList.add('bg-slate-200', 'dark:bg-slate-700', 'hover:bg-slate-300', 'text-transparent');
 
-            // Restore wheelchair icon/color if needed (simplification: just reset to default for now, standard logic covers most)
+            // Add back available styles
+            btn.classList.add('text-slate-300', 'dark:text-slate-600', 'hover:scale-125');
+            btn.classList.remove('z-10');
+
+            // Restore wheelchair icon/color if needed
             if (btn.innerHTML.includes('wheelchair')) {
-                btn.classList.add('bg-blue-100', 'dark:bg-blue-900/50');
-                btn.classList.remove('bg-slate-200', 'bg-secondary');
+                btn.classList.add('text-blue-500', 'dark:text-blue-400');
+                btn.classList.remove('text-slate-300', 'dark:text-slate-600');
             }
 
         } else {
@@ -118,8 +123,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             selectedSeats.push({ id, price });
-            btn.classList.remove('bg-slate-200', 'dark:bg-slate-700', 'bg-blue-100', 'dark:bg-blue-900/50', 'text-transparent', 'text-blue-600');
-            btn.classList.add('bg-secondary', 'text-white', 'shadow-lg', 'shadow-secondary/50', 'hover:bg-secondary');
+
+            // Remove available styles
+            btn.classList.remove('text-slate-300', 'dark:text-slate-600', 'text-blue-500', 'dark:text-blue-400', 'hover:text-accent');
+
+            // Add selected styles
+            btn.classList.add('text-secondary', 'drop-shadow-[0_0_15px_rgba(124,58,237,0.8)]', 'scale-125', 'z-10');
+            btn.classList.remove('hover:scale-125'); // Prevent double scaling
         }
 
         updateSummary();
@@ -172,5 +182,14 @@ document.addEventListener('DOMContentLoaded', () => {
         taxDisplay.innerText = `$${tax.toFixed(2)}`;
         totalDisplay.innerText = `$${total.toFixed(2)}`;
     }
+
+    // Redirect to Login on Checkout
+    checkoutBtns.forEach(btn => {
+        if (btn) {
+            btn.addEventListener('click', () => {
+                window.location.href = 'login.html';
+            });
+        }
+    });
 
 });

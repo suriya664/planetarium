@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     initMobileMenu();
     initScrollEffects();
+    initMobileFilters();
 });
 
 /**
@@ -78,20 +79,58 @@ function initMobileMenu() {
  */
 function initScrollEffects() {
     const header = document.querySelector('header');
+    const navLinks = document.querySelectorAll('.nav-link');
+    const logoText = document.querySelector('.font-brand');
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 
     if (header) {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
                 header.classList.add('shadow-lg', 'bg-white/90', 'backdrop-blur-md', 'dark:bg-slate-900/90');
-                header.classList.remove('bg-transparent');
+                header.classList.remove('bg-transparent', 'fixed-header-transparent');
+
+                // Switch to dark text when background is white (if not in dark mode)
+                // We rely on dark: classes for dark mode handling
+                header.classList.remove('text-white');
+                header.classList.add('text-slate-900', 'dark:text-slate-100');
+
+                // Update nav links
+                navLinks.forEach(link => {
+                    link.classList.remove('text-white', 'hover:text-white/80');
+                    link.classList.add('text-slate-700', 'dark:text-slate-200');
+                });
+
+                // Update mobile menu btn if needed
+                if (mobileMenuBtn) {
+                    mobileMenuBtn.classList.remove('text-white');
+                    mobileMenuBtn.classList.add('text-slate-900', 'dark:text-white');
+                }
+
             } else {
-                // Determine if we are on a page that needs transparent header at top
-                if (header.classList.contains('fixed-header-transparent')) {
+                // Only revert to transparent if the header expects it (e.g. on Hero pages)
+                const isTransparentPage = header.getAttribute('data-transparent') === 'true';
+
+                if (isTransparentPage) {
                     header.classList.remove('shadow-lg', 'bg-white/90', 'backdrop-blur-md', 'dark:bg-slate-900/90');
-                    header.classList.add('bg-transparent');
+                    header.classList.add('bg-transparent', 'fixed-header-transparent', 'text-white');
+                    header.classList.remove('text-slate-900', 'dark:text-slate-100');
+
+                    // Update nav links
+                    navLinks.forEach(link => {
+                        link.classList.add('text-white', 'hover:text-white/80');
+                        link.classList.remove('text-slate-700', 'dark:text-slate-200');
+                    });
+
+                    if (mobileMenuBtn) {
+                        mobileMenuBtn.classList.add('text-white');
+                        mobileMenuBtn.classList.remove('text-slate-900', 'dark:text-white');
+                    }
                 }
             }
         });
+
+        // Trigger once on load to set initial state
+        window.dispatchEvent(new Event('scroll'));
     }
 }
 
@@ -101,4 +140,34 @@ function formatCurrency(amount) {
         style: 'currency',
         currency: 'USD'
     }).format(amount);
+}
+
+/**
+ * Initialize Mobile Filters (Shows Page)
+ */
+function initMobileFilters() {
+    const filterBtn = document.querySelector('button i[data-lucide="filter"]')?.parentElement;
+    // targeting by icon inside button since it didn't have an ID in the HTML viewing earlier
+    // Actually, looking at shows-schedule.html line 140:
+    // <button class="md:hidden w-full ...">... Filter Shows & Dates ...</button>
+    // It doesn't have an ID. I should add one or select by class.
+    // Let's use a class selector for safety or add the ID in the HTML step.
+    // I'll assume I will add `id="mobile-filter-btn"` to the HTML.
+
+    const btn = document.getElementById('mobile-filter-btn');
+    const sidebar = document.querySelector('aside'); // The sidebar is an <aside>
+
+    if (btn && sidebar) {
+        btn.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+            sidebar.classList.toggle('fixed');
+            sidebar.classList.toggle('inset-0');
+            sidebar.classList.toggle('z-50');
+            sidebar.classList.toggle('bg-white');
+            sidebar.classList.toggle('dark:bg-slate-900');
+            sidebar.classList.toggle('p-4');
+            sidebar.classList.toggle('overflow-y-auto');
+            // This is a quick toggle to make it full screen on mobile
+        });
+    }
 }
