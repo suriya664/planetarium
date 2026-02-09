@@ -46,9 +46,8 @@
 <body class="bg-slate-50 text-slate-900 dark:bg-dark dark:text-slate-100 transition-colors duration-300">
 
     <!-- Header (Same as v1) -->
-    <header
-        class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-lg dark:bg-slate-900/90"
-        id="main-header" data-transparent="true">
+    <header class="fixed w-full z-50 transition-all duration-300 bg-white dark:bg-slate-900 shadow-sm" id="main-header"
+        data-transparent="false">
         <div class="container mx-auto px-4 md:px-6">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
@@ -58,33 +57,24 @@
                         <i class="fa-solid fa-star"></i>
                     </div>
                     <span
-                        class="font-brand font-bold text-xl md:text-2xl tracking-tight dark:text-white text-primary uppercase">
+                        class="font-brand font-bold text-xl md:text-2xl tracking-tight text-primary dark:text-white uppercase">
                         Cosmic<span class="text-accent">Dome</span>
                     </span>
                 </a>
 
                 <!-- Desktop Nav -->
                 <nav class="hidden lg:flex items-center space-x-8">
-                    <div class="relative group">
-                        <button class="nav-link font-medium hover:text-accent transition-colors flex items-center">
-                            Home <i class="lucide-chevron-down w-4 h-4 ml-1"></i>
-                        </button>
-                        <!-- Dropdown -->
-                        <div
-                            class="absolute top-full left-0 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl py-2 hidden group-hover:block border border-slate-100 dark:border-slate-700 mt-2 text-slate-900 dark:text-white">
-                            <a href="index.html"
-                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
-                                v1 (Immersive)</a>
-                            <a href="index-v2.html"
-                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent font-bold text-accent">Home
-                                v2 (Schedule)</a>
-                        </div>
-                    </div>
+                    <a href="index.html"
+                        class="nav-link font-medium text-slate-700 dark:text-white hover:text-accent transition-colors">Home</a>
+                    <a href="index-v2.html" class="nav-link font-medium transition-colors text-accent">Schedule</a>
                     <a href="shows-schedule.html"
-                        class="nav-link font-medium hover:text-accent transition-colors">Shows</a>
-                    <a href="visit-info.html" class="nav-link font-medium hover:text-accent transition-colors">Visit</a>
-                    <a href="education.html" class="nav-link font-medium hover:text-accent transition-colors">Learn</a>
-                    <a href="about.html" class="nav-link font-medium hover:text-accent transition-colors">About</a>
+                        class="nav-link font-medium text-slate-700 dark:text-white hover:text-accent transition-colors">Shows</a>
+                    <a href="visit-info.html"
+                        class="nav-link font-medium text-slate-700 dark:text-white hover:text-accent transition-colors">Visit</a>
+                    <a href="education.html"
+                        class="nav-link font-medium text-slate-700 dark:text-white hover:text-accent transition-colors">Learn</a>
+                    <a href="about.html"
+                        class="nav-link font-medium text-slate-700 dark:text-white hover:text-accent transition-colors">About</a>
                 </nav>
 
                 <!-- Right Actions -->
@@ -113,8 +103,9 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <button id="mobile-menu-btn"
+                    class="lg:hidden p-3 -mr-2 text-slate-900 dark:text-white transition-colors">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
                 </button>
             </div>
         </div>
@@ -139,7 +130,7 @@
         </div>
         <nav class="flex flex-col space-y-6 text-lg font-medium">
             <a href="index.html">Home</a>
-            <a href="index-v2.html" class="text-accent">Home v2 (Schedule)</a>
+            <a href="index-v2.html" class="text-accent">Schedule</a>
             <a href="shows-schedule.html">Shows & Tickets</a>
             <a href="visit-info.html">Plan Your Visit</a>
             <a href="education.html">Education</a>
@@ -218,9 +209,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 <!-- Card 1 -->
                 <div
-                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors flex flex-col h-full">
+                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors flex flex-col h-full text-center">
                     <div
-                        class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-300 mb-4">
+                        class="w-12 h-12 bg-blue-100 dark:bg-blue-900 rounded-lg flex items-center justify-center text-blue-600 dark:text-blue-300 mb-4 mx-auto">
                         <i data-lucide="ticket" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">General Admission</h3>
@@ -234,11 +225,11 @@
 
                 <!-- Card 2 -->
                 <div
-                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors relative overflow-hidden flex flex-col h-full">
+                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors relative overflow-hidden flex flex-col h-full text-center">
                     <div class="absolute top-0 right-0 bg-accent text-white text-xs font-bold px-2 py-1 rounded-bl-lg">
                         BEST VALUE</div>
                     <div
-                        class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-300 mb-4">
+                        class="w-12 h-12 bg-purple-100 dark:bg-purple-900 rounded-lg flex items-center justify-center text-purple-600 dark:text-purple-300 mb-4 mx-auto">
                         <i data-lucide="star" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">All-Day Pass</h3>
@@ -252,9 +243,9 @@
 
                 <!-- Card 3 -->
                 <div
-                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors flex flex-col h-full">
+                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors flex flex-col h-full text-center">
                     <div
-                        class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center text-green-600 dark:text-green-300 mb-4">
+                        class="w-12 h-12 bg-green-100 dark:bg-green-900 rounded-lg flex items-center justify-center text-green-600 dark:text-green-300 mb-4 mx-auto">
                         <i data-lucide="users" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Membership</h3>
@@ -268,9 +259,9 @@
 
                 <!-- Card 4 -->
                 <div
-                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors flex flex-col h-full">
+                    class="p-6 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 hover:border-accent transition-colors flex flex-col h-full text-center">
                     <div
-                        class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-300 mb-4">
+                        class="w-12 h-12 bg-orange-100 dark:bg-orange-900 rounded-lg flex items-center justify-center text-orange-600 dark:text-orange-300 mb-4 mx-auto">
                         <i data-lucide="school" class="w-6 h-6"></i>
                     </div>
                     <h3 class="font-bold text-lg mb-2">Group Rates</h3>
@@ -306,7 +297,106 @@
         </div>
     </section>
 
-    <!-- Footer (Same as v1) -->
+    <!-- Upcoming Special Events -->
+    <section class="py-20 bg-slate-50 dark:bg-dark">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
+                <div class="max-w-2xl">
+                    <h2 class="text-3xl md:text-4xl font-heading font-bold mb-4">Upcoming Special Events</h2>
+                    <p class="text-slate-600 dark:text-slate-400">Mark your calendars for these exclusive cosmic
+                        presentations and night-sky viewing parties.</p>
+                </div>
+                <a href="shows-schedule.html"
+                    class="btn-primary px-8 py-3 rounded-lg text-white font-bold shadow-lg hover:shadow-xl transition-all">
+                    Full Schedule
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Event 1 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg flex flex-col sm:flex-row group border border-slate-100 dark:border-slate-700">
+                    <div class="sm:w-2/5 relative h-48 sm:h-auto">
+                        <img src="https://images.unsplash.com/photo-1543722530-d2c3201371e7?w=500&auto=format&fit=crop&q=60"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            alt="Meteor Shower">
+                        <div
+                            class="absolute top-4 left-4 bg-accent text-white text-xs font-bold px-3 py-1 rounded-full">
+                            NEW
+                        </div>
+                    </div>
+                    <div class="p-6 sm:w-3/5">
+                        <div class="text-secondary dark:text-purple-300 text-xs font-bold uppercase mb-2">August 28,
+                            2026</div>
+                        <h3 class="text-xl font-bold mb-2">Perseid Meteor Shower Party</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">A guided night-sky observation
+                            session
+                            with telescopes and expert commentary.</p>
+                        <div class="flex items-center text-xs text-slate-500 mb-4">
+                            <i class="far fa-clock mr-2"></i> 8:00 PM - 11:00 PM
+                        </div>
+                        <a href="ticket-purchase.html" class="text-accent font-bold hover:underline">Reserve Spot
+                            &rarr;</a>
+                    </div>
+                </div>
+
+                <!-- Event 2 -->
+                <div
+                    class="bg-white dark:bg-slate-800 rounded-2xl overflow-hidden shadow-lg flex flex-col sm:flex-row group border border-slate-100 dark:border-slate-700">
+                    <div class="sm:w-2/5 relative h-48 sm:h-auto">
+                        <img src="https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?w=500&auto=format&fit=crop&q=60"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                            alt="Lunar Eclipse">
+                    </div>
+                    <div class="p-6 sm:w-3/5">
+                        <div class="text-secondary dark:text-purple-300 text-xs font-bold uppercase mb-2">September 12,
+                            2026</div>
+                        <h3 class="text-xl font-bold mb-2">Moon & Mars Triple Conjunction</h3>
+                        <p class="text-slate-600 dark:text-slate-400 text-sm mb-4">Witness a rare celestial alignment
+                            through our powerful observatory telescopes.</p>
+                        <div class="flex items-center text-xs text-slate-500 mb-4">
+                            <i class="far fa-clock mr-2"></i> 7:30 PM - 10:00 PM
+                        </div>
+                        <a href="ticket-purchase.html" class="text-accent font-bold hover:underline">Reserve Spot
+                            &rarr;</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter -->
+    <section class="py-20 bg-primary dark:bg-dark relative overflow-hidden">
+        <!-- Background Glow -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-accent/20 rounded-full blur-[100px]"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-secondary/20 rounded-full blur-[100px]"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="max-w-4xl mx-auto glass p-8 md:p-12 rounded-3xl border border-white/10 text-center">
+                <i data-lucide="mail" class="w-12 h-12 text-accent mx-auto mb-6"></i>
+                <h2 class="text-3xl md:text-5xl font-heading font-bold text-white mb-4">Don't Miss the Next Discovery
+                </h2>
+                <p class="text-slate-300 text-lg mb-8 max-w-2xl mx-auto">
+                    Subscribe to our newsletter for exclusive event invites, astronomy guides, and cosmic updates
+                    delivered to your inbox.
+                </p>
+
+                <form class="flex flex-col sm:flex-row gap-4 max-w-lg mx-auto">
+                    <input type="email" placeholder="Your email address" required
+                        class="flex-1 bg-white/10 border border-white/20 rounded-xl px-6 py-4 text-white focus:outline-none focus:ring-2 focus:ring-accent backdrop-blur-sm">
+                    <button type="submit"
+                        class="bg-accent hover:bg-accent/80 text-white font-bold px-8 py-4 rounded-xl transition-all shadow-lg">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-slate-500 text-xs mt-6">
+                    We respect your privacy. Unsubscribe at any time.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
     <footer class="bg-darker text-slate-300 pt-16 pb-8 border-t border-slate-800">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">

@@ -54,20 +54,9 @@
                 </a>
 
                 <nav class="hidden lg:flex items-center space-x-8">
-                    <div class="relative group">
-                        <button class="nav-link font-medium hover:text-accent transition-colors flex items-center">
-                            Home <i class="lucide-chevron-down w-4 h-4 ml-1"></i>
-                        </button>
-                        <div
-                            class="absolute top-full left-0 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl py-2 hidden group-hover:block border border-slate-100 dark:border-slate-700 mt-2">
-                            <a href="index.html"
-                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
-                                v1 (Immersive)</a>
-                            <a href="index-v2.html"
-                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
-                                v2 (Schedule)</a>
-                        </div>
-                    </div>
+                    <a href="index.html" class="nav-link font-medium hover:text-accent transition-colors">Home</a>
+                    <a href="index-v2.html"
+                        class="nav-link font-medium hover:text-accent transition-colors">Schedule</a>
                     <a href="shows-schedule.html"
                         class="nav-link font-medium hover:text-accent transition-colors text-accent">Shows</a>
                     <a href="visit-info.html" class="nav-link font-medium hover:text-accent transition-colors">Visit</a>
@@ -93,8 +82,10 @@
                         <i data-lucide="user" class="w-4 h-4"></i>
                     </a>
                 </div>
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white"><i data-lucide="menu"
-                        class="w-6 h-6"></i></button>
+                <button id="mobile-menu-btn"
+                    class="lg:hidden p-3 -mr-2 text-slate-900 dark:text-white transition-colors">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
+                </button>
             </div>
         </div>
     </header>
@@ -118,7 +109,7 @@
         </div>
         <nav class="flex flex-col space-y-6 text-lg font-medium">
             <a href="index.html">Home</a>
-            <a href="index-v2.html">Home v2 (Schedule)</a>
+            <a href="index-v2.html">Schedule</a>
             <a href="shows-schedule.html" class="text-accent">Shows & Tickets</a>
             <a href="visit-info.html">Plan Your Visit</a>
             <a href="education.html">Education</a>
@@ -454,10 +445,11 @@
         </div>
     </div>
 
-    <!-- Footer (Standard) -->
+    <!-- Footer -->
     <footer class="bg-darker text-slate-300 pt-16 pb-8 border-t border-slate-800">
         <div class="container mx-auto px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <!-- Branding -->
                 <div>
                     <a href="index.html" class="flex items-center space-x-2 mb-6 group">
                         <div
@@ -471,7 +463,20 @@
                     <p class="text-sm leading-relaxed mb-6 text-slate-400">
                         Inspiring wonder and curiosity through immersive space experiences and education.
                     </p>
+                    <div class="flex space-x-4">
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i
+                                class="fab fa-facebook-f"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i
+                                class="fab fa-twitter"></i></a>
+                        <a href="#"
+                            class="w-10 h-10 rounded-full bg-slate-800 flex items-center justify-center hover:bg-primary hover:text-white transition-all"><i
+                                class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
+
+                <!-- Visit -->
                 <div>
                     <h4 class="text-white font-bold mb-6">Visit</h4>
                     <ul class="space-y-3 text-sm">
@@ -481,29 +486,40 @@
                         </li>
                         <li><a href="visit-info.html" class="hover:text-accent transition-colors">Directions &
                                 Parking</a></li>
+                        <li><a href="visit-info.html" class="hover:text-accent transition-colors">Accessibility</a></li>
                     </ul>
                 </div>
+
+                <!-- Learn -->
                 <div>
                     <h4 class="text-white font-bold mb-6">Learn</h4>
                     <ul class="space-y-3 text-sm">
                         <li><a href="education.html" class="hover:text-accent transition-colors">School Programs</a>
                         </li>
                         <li><a href="#" class="hover:text-accent transition-colors">Astronomy Camp</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Star Gazing Guides</a></li>
+                        <li><a href="#" class="hover:text-accent transition-colors">Educator Resources</a></li>
                     </ul>
                 </div>
+
+                <!-- Contact -->
                 <div>
                     <h4 class="text-white font-bold mb-6">Contact</h4>
                     <ul class="space-y-3 text-sm">
                         <li class="flex items-start"><i class="fas fa-map-marker-alt mt-1 mr-3 text-accent"></i> 123
-                            Cosmic Way, Galaxy City</li>
+                            Cosmic Way, Galaxy City, ST 12345</li>
+                        <li class="flex items-center"><i class="fas fa-phone mr-3 text-accent"></i> (555) 123-4567</li>
                         <li class="flex items-center"><i class="fas fa-envelope mr-3 text-accent"></i>
                             info@planetarium.org</li>
                     </ul>
                 </div>
             </div>
+
             <div
                 class="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-500">
-                <div class="mb-4 md:mb-0">&copy; 2026 CosmicDome Planetarium. All rights reserved.</div>
+                <div class="mb-4 md:mb-0">
+                    &copy; 2026 CosmicDome Planetarium. All rights reserved.
+                </div>
                 <div class="flex space-x-6">
                     <a href="#" class="hover:text-white">Privacy Policy</a>
                     <a href="#" class="hover:text-white">Terms of Service</a>

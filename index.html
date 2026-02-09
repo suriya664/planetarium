@@ -64,21 +64,9 @@
 
                 <!-- Desktop Nav -->
                 <nav class="hidden lg:flex items-center space-x-8">
-                    <div class="relative group">
-                        <button class="nav-link font-medium hover:text-accent transition-colors flex items-center">
-                            Home <i class="lucide-chevron-down w-4 h-4 ml-1"></i>
-                        </button>
-                        <!-- Dropdown -->
-                        <div
-                            class="absolute top-full left-0 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-xl py-2 hidden group-hover:block border border-slate-100 dark:border-slate-700 mt-2 text-slate-900 dark:text-white">
-                            <a href="index.html"
-                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
-                                v1 (Immersive)</a>
-                            <a href="index-v2.html"
-                                class="block px-4 py-2 hover:bg-slate-50 dark:hover:bg-slate-700 hover:text-accent">Home
-                                v2 (Schedule)</a>
-                        </div>
-                    </div>
+                    <a href="index.html" class="nav-link font-medium hover:text-accent transition-colors">Home</a>
+                    <a href="index-v2.html"
+                        class="nav-link font-medium hover:text-accent transition-colors">Schedule</a>
                     <a href="shows-schedule.html"
                         class="nav-link font-medium hover:text-accent transition-colors">Shows</a>
                     <a href="visit-info.html" class="nav-link font-medium hover:text-accent transition-colors">Visit</a>
@@ -113,8 +101,9 @@
                 </div>
 
                 <!-- Mobile Menu Button -->
-                <button id="mobile-menu-btn" class="lg:hidden p-2 text-slate-800 dark:text-white">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
+                <button id="mobile-menu-btn"
+                    class="lg:hidden p-3 -mr-2 text-slate-900 dark:text-white transition-colors">
+                    <i data-lucide="menu" class="w-7 h-7"></i>
                 </button>
             </div>
         </div>
@@ -139,7 +128,7 @@
         </div>
         <nav class="flex flex-col space-y-6 text-lg font-medium">
             <a href="index.html" class="text-accent">Home</a>
-            <a href="index-v2.html">Home v2 (Schedule)</a>
+            <a href="index-v2.html">Schedule</a>
             <a href="shows-schedule.html">Shows & Tickets</a>
             <a href="visit-info.html">Plan Your Visit</a>
             <a href="education.html">Education</a>
@@ -161,7 +150,7 @@
         <div class="absolute inset-0 z-0">
             <img src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=2071&auto=format&fit=crop"
                 class="w-full h-full object-cover" alt="Space Background">
-            <div class="absolute inset-0 bg-gradient-to-b from-dark/80 via-dark/60 to-slate-50 dark:to-dark"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-dark/95 via-dark/70 to-slate-50 dark:to-dark"></div>
         </div>
 
         <div class="container mx-auto px-4 relative z-10 text-center pt-20">
@@ -174,7 +163,7 @@
                 Journey Through <br>
                 <span class="text-gradient-cosmic">The Cosmos</span>
             </h1>
-            <p class="text-xl md:text-2xl text-slate-200 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
+            <p class="text-xl md:text-2xl text-white/90 mb-10 max-w-2xl mx-auto font-light leading-relaxed">
                 Experience the wonders of space on our state-of-the-art 60-foot dome. Immerse yourself in the universe.
             </p>
 
@@ -191,41 +180,44 @@
 
             <!-- Live Info Bar -->
             <div
-                class="mt-16 mx-auto max-w-4xl glass rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center justify-around gap-4 md:gap-8 animate-fade-in-up">
+                class="mt-16 mx-auto max-w-4xl glass bg-white/40 dark:bg-white/10 rounded-2xl p-4 md:p-6 flex flex-col md:flex-row items-center justify-around gap-4 md:gap-8 animate-fade-in-up shadow-xl shadow-black/5 dark:shadow-none">
                 <div class="flex items-center gap-3">
                     <div class="p-2 bg-accent/20 rounded-full text-accent">
                         <i data-lucide="film" class="w-5 h-5"></i>
                     </div>
                     <div class="text-left">
-                        <p class="text-xs text-slate-400 uppercase tracking-wider">Now Showing</p>
-                        <p class="text-white font-semibold">Cosmic Wonders</p>
+                        <p class="text-xs text-slate-800 dark:text-slate-400 uppercase tracking-wider font-semibold">Now
+                            Showing</p>
+                        <p class="text-black dark:text-white font-bold">Cosmic Wonders</p>
                     </div>
                 </div>
-                <div class="hidden md:block w-px h-10 bg-white/10"></div>
+                <div class="hidden md:block w-px h-10 bg-slate-200 dark:bg-white/10"></div>
                 <div class="flex items-center gap-3">
                     <div class="p-2 bg-secondary/20 rounded-full text-secondary">
                         <i data-lucide="calendar" class="w-5 h-5"></i>
                     </div>
                     <div class="text-left">
-                        <p class="text-xs text-slate-400 uppercase tracking-wider">Today's Shows</p>
-                        <p class="text-white font-semibold">5 Performances</p>
+                        <p class="text-xs text-slate-800 dark:text-slate-400 uppercase tracking-wider font-semibold">
+                            Today's Shows</p>
+                        <p class="text-black dark:text-white font-bold">5 Performances</p>
                     </div>
                 </div>
-                <div class="hidden md:block w-px h-10 bg-white/10"></div>
+                <div class="hidden md:block w-px h-10 bg-slate-200 dark:bg-white/10"></div>
                 <div class="flex items-center gap-3">
                     <div class="p-2 bg-orange-500/20 rounded-full text-orange-500">
                         <i data-lucide="tag" class="w-5 h-5"></i>
                     </div>
                     <div class="text-left">
-                        <p class="text-xs text-slate-400 uppercase tracking-wider">Tickets From</p>
-                        <p class="text-white font-semibold">$12.00</p>
+                        <p class="text-xs text-slate-800 dark:text-slate-400 uppercase tracking-wider font-semibold">
+                            Tickets From</p>
+                        <p class="text-black dark:text-white font-bold">$12.00</p>
                     </div>
                 </div>
             </div>
 
             <!-- Scroll Indicator -->
             <div class="absolute bottom-[-100px] left-1/2 transform -translate-x-1/2 animate-bounce">
-                <i data-lucide="arrow-down" class="text-white/50 w-6 h-6"></i>
+                <i data-lucide="arrow-down" class="text-slate-500 dark:text-white/50 w-6 h-6"></i>
             </div>
         </div>
     </section>
