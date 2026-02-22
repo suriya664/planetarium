@@ -147,58 +147,79 @@
     </div>
 
 
-    <!-- Split Hero -->
-    <section class="min-h-screen pt-24 pb-12 bg-slate-50 dark:bg-dark relative overflow-hidden flex items-center">
-        <!-- Background Elements -->
-        <div
-            class="absolute top-0 right-0 w-1/2 h-full bg-primary/5 dark:bg-primary/10 -skew-x-12 transform origin-top-right z-0">
+    <!-- Hero Section -->
+    <section class="relative min-h-screen flex items-center overflow-hidden">
+        <!-- Background Image with Overlays -->
+        <!-- Background Image with Professional 4K Asset -->
+        <div class="absolute inset-0 z-0 text-white">
+            <img src="https://images.unsplash.com/photo-1534796636912-3b95b3ab5986?w=3840&q=100&auto=format&fit=crop"
+                class="w-full h-full object-cover" alt="Ultra-High Res Space Background">
+            <!-- Refined Overlays for Clarity -->
+            <div class="absolute inset-0 bg-slate-900/40"></div>
+            <div class="absolute inset-0 bg-gradient-to-b from-slate-900/20 via-transparent to-slate-50 dark:to-dark">
+            </div>
         </div>
-        <div class="absolute bottom-0 left-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl"></div>
 
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col items-center gap-12 lg:gap-20">
+        <div class="container mx-auto px-4 relative z-10 pt-20">
+            <div class="max-w-4xl mx-auto text-center">
+                <span
+                    class="inline-block py-1.5 px-4 rounded-full bg-accent/20 border border-accent/30 text-accent font-bold text-sm mb-8 uppercase tracking-widest animate-fade-in">
+                    Open Daily 10 AM - 8 PM
+                </span>
+                <h1 class="text-4xl md:text-7xl font-heading font-bold mb-8 text-white leading-tight drop-shadow-2xl">
+                    Experience the <br>
+                    <span class="text-accent italic">Universe</span> <span class="text-white">Today</span>
+                </h1>
+                <p
+                    class="text-xl md:text-2xl text-slate-100 mb-12 max-w-2xl mx-auto drop-shadow-lg leading-relaxed font-light">
+                    Daily shows in our state-of-the-art 8K dome theater. Immerse yourself in the wonders of the
+                    cosmos.
+                </p>
 
-                <!-- Center Content -->
-                <div class="w-full text-center">
-                    <span
-                        class="inline-block py-1 px-3 rounded-full bg-secondary/10 text-secondary dark:text-purple-300 font-bold text-xs mb-6 uppercase tracking-wider">
-                        Open Daily 10 AM - 8 PM
-                    </span>
-                    <h1
-                        class="text-4xl md:text-6xl font-heading font-bold mb-6 text-slate-900 dark:text-white leading-tight">
-                        Experience the <br>
-                        <span class="text-gradient-cosmic">Universe Today</span>
-                    </h1>
-                    <p class="text-lg text-slate-600 dark:text-slate-300 mb-8 max-w-2xl mx-auto">
-                        Daily shows in our state-of-the-art 8K dome theater. Immerse yourself in the wonders of the
-                        cosmos.
-                    </p>
-
-                    <ul class="space-y-3 mb-8 text-left max-w-md mx-auto">
-                        <li class="flex items-center text-slate-700 dark:text-slate-300">
-                            <i class="fas fa-check-circle text-accent mr-3"></i> 60-foot immersive dome
-                        </li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300">
-                            <i class="fas fa-check-circle text-accent mr-3"></i> Comfortable reclining seats
-                        </li>
-                        <li class="flex items-center text-slate-700 dark:text-slate-300">
-                            <i class="fas fa-check-circle text-accent mr-3"></i> Shows for all ages
-                        </li>
-                    </ul>
-
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
-                        <a href="ticket-purchase.html"
-                            class="btn-primary px-8 py-3 rounded-lg text-white font-bold shadow-lg hover:shadow-xl transition-all">
-                            Buy Tickets
-                        </a>
-                        <a href="visit-info.html"
-                            class="px-8 py-3 rounded-lg border border-slate-300 dark:border-slate-600 text-slate-700 dark:text-slate-300 font-semibold hover:bg-slate-100 dark:hover:bg-slate-800 transition-all">
-                            Plan Your Visit
-                        </a>
-                    </div>
+                <div class="flex flex-col sm:flex-row gap-6 justify-center items-center">
+                    <a href="ticket-purchase.html"
+                        class="btn-primary px-10 py-4 rounded-xl text-white font-bold text-lg shadow-2xl hover:scale-105 transition-all w-full sm:w-auto">
+                        Buy Tickets Now
+                    </a>
+                    <a href="visit-info.html"
+                        class="px-10 py-4 rounded-xl glass text-white font-bold text-lg hover:bg-white/20 transition-all w-full sm:w-auto border border-white/30 backdrop-blur-md">
+                        Plan Your Visit
+                    </a>
                 </div>
 
+                <!-- Features List in Hero -->
+                <div class="mt-16 flex flex-wrap justify-center gap-8 md:gap-12">
+                    <div class="flex items-center text-white/90 font-medium">
+                        <div
+                            class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 border border-accent/40">
+                            <i class="fas fa-check text-accent text-sm"></i>
+                        </div>
+                        <span>60-foot 8K Dome</span>
+                    </div>
+                    <div class="flex items-center text-white/90 font-medium">
+                        <div
+                            class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 border border-accent/40">
+                            <i class="fas fa-check text-accent text-sm"></i>
+                        </div>
+                        <span>Reclining Seats</span>
+                    </div>
+                    <div class="flex items-center text-white/90 font-medium">
+                        <div
+                            class="w-8 h-8 rounded-full bg-accent/20 flex items-center justify-center mr-3 border border-accent/40">
+                            <i class="fas fa-check text-accent text-sm"></i>
+                        </div>
+                        <span>All Ages Shows</span>
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce text-white/50">
+            <span class="text-[10px] font-bold uppercase tracking-widest mb-2">Scroll</span>
+            <i data-lucide="chevron-down" class="w-6 h-6"></i>
+        </div>
     </section>
 
     <!-- Ticket Options -->

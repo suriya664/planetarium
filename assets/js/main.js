@@ -158,16 +158,40 @@ function initMobileFilters() {
     const sidebar = document.querySelector('aside'); // The sidebar is an <aside>
 
     if (btn && sidebar) {
-        btn.addEventListener('click', () => {
+        const applyFiltersBtn = document.getElementById('apply-filters-btn');
+
+        const toggleSidebar = () => {
             sidebar.classList.toggle('hidden');
             sidebar.classList.toggle('fixed');
             sidebar.classList.toggle('inset-0');
             sidebar.classList.toggle('z-50');
             sidebar.classList.toggle('bg-white');
             sidebar.classList.toggle('dark:bg-slate-900');
-            sidebar.classList.toggle('p-4');
+            sidebar.classList.toggle('p-6'); // Increased padding slightly for mobile modal
             sidebar.classList.toggle('overflow-y-auto');
-            // This is a quick toggle to make it full screen on mobile
-        });
+
+            // Handle body scroll locking
+            if (sidebar.classList.contains('fixed')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        };
+
+        btn.addEventListener('click', toggleSidebar);
+
+        if (applyFiltersBtn) {
+            applyFiltersBtn.addEventListener('click', () => {
+                // Only close if we are in mobile/tablet mode (sidebar is fixed)
+                if (sidebar.classList.contains('fixed')) {
+                    toggleSidebar();
+                }
+            });
+        }
+
+        const closeFiltersBtn = document.getElementById('close-filters-btn');
+        if (closeFiltersBtn) {
+            closeFiltersBtn.addEventListener('click', toggleSidebar);
+        }
     }
 }

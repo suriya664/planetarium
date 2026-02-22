@@ -143,6 +143,10 @@ h6 {
     animation: spin-slow 20s linear infinite;
 }
 
+.animate-fade-in {
+    animation: fadeIn 0.8s ease-out forwards;
+}
+
 /* --- Component Overrides --- */
 
 /* Buttons */

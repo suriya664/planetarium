@@ -140,31 +140,62 @@
 
 
     <!-- Page Content -->
-    <div class="min-h-screen pt-24 pb-20">
-        <div class="container mx-auto px-4">
-
-            <!-- Page Header -->
-            <div class="mb-12 text-center md:text-left">
-                <h1 class="text-4xl md:text-5xl font-heading font-bold mb-4">Shows & Schedule</h1>
-                <p class="text-slate-500 dark:text-slate-400">Find the perfect show for your visit. 12 unique
-                    experiences.</p>
+    <div class="min-h-screen pb-20">
+        <!-- Hero Section -->
+        <section class="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden mb-12">
+            <!-- Background Image with Parallax-like effect -->
+            <!-- Background Image with Professional 4K Asset -->
+            <div class="absolute inset-0 z-0 text-white">
+                <img src="https://images.unsplash.com/photo-1506318137071-a8e063b4b57e?w=3840&q=100&auto=format&fit=crop"
+                    class="w-full h-full object-cover" alt="Ultra-High Res Cosmic Background">
+                <!-- Refined Overlays for Clarity -->
+                <div class="absolute inset-0 bg-slate-900/40"></div>
+                <div
+                    class="absolute inset-0 bg-gradient-to-t from-slate-50 dark:from-dark via-transparent to-transparent">
+                </div>
             </div>
 
-            <!-- Mobile Filter Toggle -->
+            <div class="container mx-auto px-4 relative z-10">
+                <div class="max-w-3xl text-center md:text-left">
+                    <div
+                        class="inline-block px-4 py-1.5 mb-6 rounded-full bg-accent/20 border border-accent/30 text-accent text-sm font-bold tracking-wider uppercase animate-fade-in">
+                        Plan Your Journey
+                    </div>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-heading font-bold mb-6 text-white drop-shadow-2xl">
+                        Shows & <span
+                            class="text-accent underline decoration-accent/30 underline-offset-8">Schedule</span>
+                    </h1>
+                    <p class="text-slate-200 text-lg md:text-xl font-medium drop-shadow-xl max-w-2xl leading-relaxed">
+                        Find the perfect show for your visit. Step into the dome and discover 12 unique immersive
+                        experiences through time and space.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <div class="container mx-auto px-4">
+
+            <!-- Mobile/Tablet Filter Toggle -->
             <button id="mobile-filter-btn"
-                class="md:hidden w-full mb-8 py-3 bg-white dark:bg-slate-800 rounded-xl shadow border border-slate-200 dark:border-slate-700 flex items-center justify-center font-bold">
+                class="lg:hidden w-full mb-8 py-3 bg-white dark:bg-slate-800 rounded-xl shadow border border-slate-200 dark:border-slate-700 flex items-center justify-center font-bold">
                 <i data-lucide="filter" class="w-5 h-5 mr-2"></i> Filter Shows & Dates
             </button>
 
-            <div class="flex flex-col md:flex-row gap-8">
+            <div class="flex flex-col lg:flex-row gap-8">
 
                 <!-- Sidebar Filters (Desktop) -->
-                <aside class="hidden md:block w-64 flex-shrink-0">
+                <aside class="hidden lg:block w-64 flex-shrink-0">
                     <div
                         class="bg-white dark:bg-slate-800 rounded-2xl shadow-lg p-6 sticky top-28 border border-slate-100 dark:border-slate-700">
                         <div class="flex justify-between items-center mb-6">
                             <h3 class="font-bold text-lg">Filters</h3>
-                            <button class="text-xs text-accent hover:underline">Reset</button>
+                            <div class="flex items-center gap-4">
+                                <button class="text-xs text-accent hover:underline">Reset</button>
+                                <button id="close-filters-btn"
+                                    class="lg:hidden p-2 -mr-2 text-slate-500 hover:text-accent transition-colors">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
                         </div>
 
                         <!-- Date Picker Mock -->
@@ -223,7 +254,8 @@
                             </div>
                         </div>
 
-                        <button class="w-full btn-primary py-2 rounded-lg text-white font-bold text-sm">Apply
+                        <button id="apply-filters-btn"
+                            class="w-full btn-primary py-2 rounded-lg text-white font-bold text-sm">Apply
                             Filters</button>
 
                     </div>
